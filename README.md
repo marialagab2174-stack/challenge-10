@@ -1,33 +1,38 @@
-# 🤖 Projet iCub Humanoid - ROS 2 Jazzy
-## Développement & Simulation Avancée
+# 🤖 iCub Humanoid Project - ROS 2 Jazzy
 
-Ce dépôt contient le modèle cinématique complet du robot humanoïde **iCub**, conçu pour la recherche en robotique et systèmes intelligents.
+![ROS 2](https://img.shields.io/badge/ROS-2%20Jazzy-blue)
+![Robotics](https://img.shields.io/badge/Specialty-Robotics%20%26%20Intelligent%20Systems-red)
 
----
+Ce projet contient la modélisation URDF complète et le système de contrôle du robot humanoïde **iCub**.
 
-### 📋 Cahier des Charges & Spécifications
-- **Base Mobile & Torse** : Support du bassin (root_link) avec 3 degrés de liberté pour le torse (pitch, roll, yaw).
-- **Système de Vision** : Intégration de deux caméras simulées (l_eye, r_eye) positionnées anatomiquement.
-- **Manipulation Fine** : Modélisation complète des mains avec 5 doigts (phalanges proximales et distales).
+## 🌟 Caractéristiques Principales
+- **URDF Haute-Fidélité** : Incluant la base, le torse, le cou, la tête et les mains détaillées.
+- **Cinématique Corrigée** : Articulations du cou et des doigts optimisées pour éviter les collisions fantômes.
+- **Visualisation Dynamique** : Support complet pour RViz2 avec contrôle des joints en temps réel.
 
-### 🔧 Corrections Techniques Appliquées
-- **Ajustement du Cou** : Correction de l'origine sur l'axe Z pour le `neck_pitch`, plaçant le cou au-dessus du chest et non à l'intérieur.
-- **Géométrie des Doigts** : Réalignement des axes de rotation des pouces et des index pour une préhension réaliste.
-- **Rendu Visuel** : Utilisation de matériaux spécifiques (`skin`, `dark`, `red`) pour une distinction claire des composants mécaniques.
+## 📁 Nouveaux Fichiers Ajoutés
+- `launch/display.launch.py` : Automatisation complète du démarrage.
+- `scripts/move_icub.py` : Script Python pour tester les servomoteurs simulés.
+- `meshes/` : Fichiers géométriques .dae (non inclus dans le git par défaut).
 
-### 🚀 Utilisation
-1. **Compilation** :
-   ```bash
-   cd ~/ros2_ws && colcon build --symlink-install
-   source install/setup.bash
-   ```
-2. **Lancement de la Visualisation (RViz2)** :
-   ```bash
-   ros2 launch humanoid_robot display.launch.py
-   ```
+## 🚀 Guide Rapide
+### 1. Compilation
+```bash
+cd ~/ros2_ws
+colcon build --symlink-install
+source install/setup.bash
+```
+
+### 2. Lancement
+```bash
+ros2 launch humanoid_robot display.launch.py
+```
+
+### 3. Test de Mouvement
+```bash
+ros2 run humanoid_robot move_icub.py
+```
 
 ---
 **Développeur :** Maria Lagab  
-**Spécialité :** Robotique et Système Intelligent  
-**Laboratoire :** Algiers Robotics Lab  
-**Hardware :** Dell Latitude 7400
+**Environnement :** Ubuntu 24.04 | Dell Latitude 7400
